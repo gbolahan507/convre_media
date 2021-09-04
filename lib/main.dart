@@ -1,6 +1,5 @@
 import 'package:convre/core/utils/dialog_manager.dart';
 import 'package:convre/export.dart';
-import 'package:convre/layout_view.dart';
 import 'package:convre/view/onboarding/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
                   GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme),
               primaryColor: Colors.white,
               visualDensity: VisualDensity.adaptivePlatformDensity),
-          home: LayoutView(),
+          home: SplashView(),
           builder: (BuildContext context, Widget child) => Navigator(
               key: locator<DialogService>().dialogNavigationKey,
               onGenerateRoute: (RouteSettings settings) =>
