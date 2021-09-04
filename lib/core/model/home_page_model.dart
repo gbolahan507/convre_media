@@ -28,7 +28,7 @@ List<HomePageModel> homePageModel = [
   HomePageModel(
       name: 'Crypto_dina_africa',
       subName: 'crypto_dina_africa',
-      time: '14 hours ago',
+      time: '2021-09-03 14:27:40',
       title:
           'Bitcoin miners post #1.4 billion in revenue for August data shows',
       context:
@@ -41,7 +41,7 @@ List<HomePageModel> homePageModel = [
         HomePageModel(
       name: 'Zoo',
       subName: 'jim',
-      time: '1 hours ago',
+      time: '2021-07-02 14:30:40',
       title:
           'Bitcoin miners post #1.4 billion in revenue for August data shows',
       context:
@@ -54,7 +54,7 @@ List<HomePageModel> homePageModel = [
         HomePageModel(
       name: 'Kolex',
       subName: 'tola',
-      time: '14 hours ago',
+      time: '2021-09-04 15:00:40',
       title:
           'Bitcoin miners post #1.4 billion in revenue for August data shows',
       context:

@@ -1,9 +1,25 @@
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:convre/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
-class HomeViewHeading extends StatelessWidget {
+class HomeViewHeading extends StatefulWidget {
+  final String profileImage;
+  final String profileName;
+  final String subName;
+  final String time;
+
+  HomeViewHeading(
+      {this.profileImage, this.profileName, this.subName, this.time});
+
+  @override
+  _HomeViewHeadingState createState() => _HomeViewHeadingState();
+}
+
+class _HomeViewHeadingState extends State<HomeViewHeading> {
   final spinkit = SpinKitCircle(
     color: AppColors.red,
     size: 30.0,
@@ -14,13 +30,23 @@ class HomeViewHeading extends StatelessWidget {
     size: 30.0,
   );
 
-  final String profileImage;
-  final String profileName;
-  final String subName;
-  final String time;
+  
 
-  HomeViewHeading(
-      {this.profileImage, this.profileName, this.subName, this.time});
+  Timer timer;
+  @override
+  void initState() {
+    timer = Timer.periodic(Duration(minutes: 1), (timer) {
+      print(DateTime.now());
+      setState(() {});
+    });
+    super.initState();
+  }
+
+   @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +54,7 @@ class HomeViewHeading extends StatelessWidget {
       Row(
         children: [
           CachedNetworkImage(
-            imageUrl: profileImage,
+            imageUrl: widget.profileImage,
             imageBuilder: (context, imageProvider) => Container(
               width: 30.w,
               height: 30.h,
@@ -51,7 +77,7 @@ class HomeViewHeading extends StatelessWidget {
                   regularRobotoText(context,
                       color: AppColors.black,
                       fontWeight: FontWeight.bold,
-                      text: profileName),
+                      text: widget.profileName),
                   horizontalSpaceTiny,
                   Container(
                     height: 15,
@@ -59,10 +85,13 @@ class HomeViewHeading extends StatelessWidget {
                     color: AppColors.black,
                   ),
                   horizontalSpaceTiny,
-                  regularRobotoText(context,
-                      color: AppColors.black,
-                      fontWeight: FontWeight.w400,
-                      text: time),
+                  regularRobotoText(
+                    context,
+                    color: AppColors.black,
+                    fontWeight: FontWeight.w400,
+                    text:
+                        timeago.format(DateTime.parse(widget.time)).toString(),
+                  )
                 ],
               ),
               SizedBox(
@@ -71,7 +100,7 @@ class HomeViewHeading extends StatelessWidget {
               regularRobotoText(context,
                   fontSize: 12.sp,
                   color: AppColors.black.withOpacity(0.8),
-                  text: subName),
+                  text: widget.subName),
             ],
           ),
         ],
